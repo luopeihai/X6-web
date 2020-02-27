@@ -4,7 +4,7 @@
 
 ## css 题目
 
-### 水平垂直居中 [栗子](demo.freelancerman.cn/demo/css/horizontal_vertical_center.html)
+### 水平垂直居中 [栗子](http://demo.freelancerman.cn/demo/css/horizontal_vertical_center.html)
 * 绝对定位+margin:auto (父类为相对位置,子类为绝对位置)
   ```
    .box{ 
