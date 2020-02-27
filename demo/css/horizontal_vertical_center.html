@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>水平竖直垂直居中</title>
+  </head>
+  <style>
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section-1 .box {
+      position: relative;
+      height: 400px;
+      background: #3acec1;
+    }
+
+    .section-1 .box > div {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: gray;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+  </style>
+
+  <body class="X6-web">
+    <section class="section-1 ">
+      <h1>绝对定位+margin:auto</h1>
+      <div class="box">
+        <div></div>
+      </div>
+    </section>
+  </body>
+</html>
