@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X6-web 伪类</title>
+  </head>
+  <style>
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    section {
+      height: 200px;
+      background-color: turquoise;
+      margin-bottom: 20px;
+      border-bottom: 10px solid #333;
+    }
+    .section-1::before {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 60px;
+      background-color: tomato;
+    }
+    .section-2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 60px;
+      background-color: tomato;
+    }
+    .section-3::selection {
+      color: tomato;
+    }
+  </style>
+
+  <body class="X6-web">
+    <section class="section-1">
+      <h1>::before 小方块为伪类</h1>
+    </section>
+    <section class="section-2">
+      <h1>::after 小方块为伪类</h1>
+    </section>
+    <section class="section-3">::selection 选中部分文字变色</section>
+  </body>
+</html>

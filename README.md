@@ -188,6 +188,12 @@
 * :last-child 一组兄弟元素中的最后一个元素
 * :nth-child(n)  一组兄弟元素中的地n(1~n)元素
 
+### 常用的伪元素 [栗子](http://demo.freelancerman.cn/demo/css/pseudo_element.html)
+通过CSS来创建伪元素 它们在文档树或DOM中并不实际存在
+* ::defore 
+* ::after (节点顺序 : :defore > 内容子节点 > :after)
+* ::selection 文档中被用户选中部分
+
 
 
 
