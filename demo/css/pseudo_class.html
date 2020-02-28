@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X6-web 伪类</title>
+  </head>
+  <style>
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+    a {
+      text-decoration: none;
+    }
+    section {
+      margin-bottom: 20px;
+      border-bottom: 10px solid #333;
+    }
+    section > ul {
+      list-style: none;
+    }
+
+    .section-1 a:link {
+      color: tomato;
+    }
+    .section-1 a:visited {
+      color: teal;
+    }
+    .section-1 a:hover {
+      color: violet;
+    }
+    .section-1 a:active {
+      color: yellowgreen;
+    }
+
+    .section-1 input:focus {
+      color: teal;
+    }
+    .section-2 ul > li:first-child {
+      color: tomato;
+    }
+
+    .section-2 ul > li:nth-child(3) {
+      color: violet;
+    }
+    .section-2 ul > li:last-child {
+      color: turquoise;
+    }
+  </style>
+
+  <body class="X6-web">
+    <section class="section-1">
+      <h1>
+        状态伪类
+      </h1>
+      <ul>
+        <li>
+          <a href="#">:link伪类表示链接的正常状态</a>
+        </li>
+        <li>
+          <a href="#">:visited伪类表示链接被点击过</a>
+        </li>
+        <li>
+          <a href="#">:hove伪类表示鼠标悬浮查看样式</a>
+        </li>
+        <li>
+          <a href="#">:active伪类表现在鼠标点击显示样式</a>
+        </li>
+        <li>
+          <p>:focus伪类选中文字变色 <input value=":focus伪类选中文字变色" /></p>
+        </li>
+      </ul>
+    </section>
+    <section class="section-2">
+      <h1>
+        结构伪类
+      </h1>
+      <ul>
+        <li>:first-child 第一个</li>
+        <li>第二个</li>
+        <li>:nth-child(3) 第三个</li>
+        <li>:last-child 第四个</li>
+      </ul>
+    </section>
+  </body>
+</html>

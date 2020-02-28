@@ -86,6 +86,7 @@
   ```
   .box{ 
        height:400px;
+       width:600px;
        background: #3acec1;
        display:table-cell;
        text-align:center;
@@ -100,6 +101,9 @@
     }
    
   ``` 
+问个衍生问题 需要水平垂直居中元素 宽高不确定有几种方法能让它 水平垂直居中?
+答:绝对定位+transform,flex布局 ,table-cell(单元格)
+
 ### 画三角形 [栗子](http://demo.freelancerman.cn/demo/css/triangle.html)
 通过把内容宽高设置为零,设置边框宽度,3边颜色为透明,留一边显示颜色
 ```
@@ -173,4 +177,18 @@
     </div>
      
    ```
-### 常用的伪类
+### 常用的伪类 [栗子](http://demo.freelancerman.cn/demo/css/pseudo_class.html)
+首先要听清楚问的是<font face="黑体" color=red >伪类</font>还是<font face="黑体" color=red >伪元素</font>,伪类是以一个冒号(:)作为前缀 是某个元素的一种虚拟状态,常用的伪类有
+* :link  链接的正常状态显示的样式
+* :visited 链接被点击过显示的样式
+* :hove 鼠标悬浮显示的样式
+* :active 在鼠标点击显示样式
+* :focus 选中时候显示样式 (一般是表单用的比较多)
+* :first-child 一组兄弟元素中的第一个元素
+* :last-child 一组兄弟元素中的最后一个元素
+* :nth-child(n)  一组兄弟元素中的地n(1~n)元素
+
+
+
+
+
