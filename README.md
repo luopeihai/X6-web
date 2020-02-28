@@ -84,8 +84,8 @@
        height:400px;
        background: #3acec1;
        display:table-cell;
-        text-align:center;
-        vertical-align: middle;
+       text-align:center;
+       vertical-align: middle;
    }
 
    .box > div{
@@ -96,6 +96,18 @@
     }
    
   ``` 
+### 画三角形 [栗子](http://demo.freelancerman.cn/demo/css/triangle.html)
+通过把内容宽高设置为零,设置边框宽度,3边颜色为透明,留一边显示颜色
+```
+  .triangle{
+      height: 0px;
+	  width: 0px;
+	  border-color: transparent red transparent transparent;
+	  border-style: solid;
+	  border-width: 100px;
+  }
+  
+```
 
 
 
