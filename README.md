@@ -108,6 +108,65 @@
   }
   
 ```
+### 隐藏节点的方法 [栗子](http://demo.freelancerman.cn/demo/css/hide.html)
+* display:none 隐藏后的元素不占据任何空间
+* visibility: hidden 隐藏后元素空间依旧保留
+* opacity:0 节点被透明隐藏元素空间依旧保留
 
+### 清除浮动的方法 [栗子](http://demo.freelancerman.cn/demo/css/float.html)
+* clear:both 浮动的兄弟节点添加该属性
+  ```
+    .box .left {
+      height: 100px;
+      width: 100px;
+      float: left;
+      background-color: #33aaff;
+    }
+    .box .clear {
+      clear: both;
+      height: 100px;
+      background-color: #33aacc;
+    }
 
+    //html 代码
+    <div class="box">
+        <div class="left">浮动部分</div>
+        <div class="clear">清除浮动</div>
+    </div>
+  ```
+*  overflow: hidden 属性为在浮动的父类容器内
+   ```
+    .box {
+      overflow: hidden;
+    }
+    .box .left {
+      height: 100px;
+      width: 100px;
+      float: left;
+      background-color: #33aaff;
+    }
+    //html 代码
+    <div class="box">
+        <div class="left">浮动部分</div>
+    </div>
+   ```
+*  父容器 伪类设置 clear: both
+   ```
+   .box::after {
+      content: ""; //内容要为空
+      display: block; //要为块状元素
+      clear: both;
+    }
+    .box .left {
+      height: 100px;
+      width: 100px;
+      float: left;
+      background-color: #33aaff;
+    }
+    //html 代码
+    <div class="box">
+        <div class="left">浮动部分</div>
+    </div>
+     
+   ```
 
