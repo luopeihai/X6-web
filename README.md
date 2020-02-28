@@ -1,7 +1,7 @@
 # X6-web
 ### 前言
-* <font face="黑体" color='#999' size=5>通过web服务 在线运行案列(点击"栗子"看运行效果)讲解前端技能点和面试题(web front-end technology   Interview  vue react react-native)</font>
-* <font face="黑体" color='#999' size=5>运行胜于一切背题,源码在demo下欢迎拿走,背题你就破功了 老弟!</font>
+* <font face="黑体" color=#999 size=5>通过web服务 在线运行案列(点击"栗子"看运行效果)讲解前端技能点和面试题(web front-end technology   Interview  vue react react-native)</font>
+* <font face="黑体" color=#999 size=5>运行胜于一切背题,源码在demo下欢迎拿走,背题你就破功了 老弟!</font>
 
 
 
