@@ -194,6 +194,22 @@
 * ::after (节点顺序 : :defore > 内容子节点 > :after)
 * ::selection 文档中被用户选中部分
 
+### 文本溢出
+* 单文本溢出
+  ```
+   overflow: hidden;
+   text-overflow:ellipsis;
+   white-space: nowrap;
+  ```
+* 多行文本溢出
+   ```
+    display: -webkit-box; /* 弹性伸缩盒子模型显示 */
+      -webkit-box-orient: vertical; /*  检索伸缩盒对象的子元素的排列方式 */
+      -webkit-line-clamp: 3; /*用来限制在一个块元素显示的文本的行数 */
+      overflow: hidden;
+   ```  
+
+
 
 
 
