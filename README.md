@@ -194,7 +194,7 @@
 * ::after (节点顺序 : :defore > 内容子节点 > :after)
 * ::selection 文档中被用户选中部分
 
-### 文本溢出
+### 文本溢出 [栗子](http://demo.freelancerman.cn/demo/css/overflow_text.html)
 * 单文本溢出
   ```
    overflow: hidden;
@@ -208,6 +208,20 @@
       -webkit-line-clamp: 3; /*用来限制在一个块元素显示的文本的行数 */
       overflow: hidden;
    ```  
+### 常用的css3 属性 [栗子](http://demo.freelancerman.cn/demo/css/css3.html)
+* border-raidus 圆角
+* box-shadow 阴影
+* background-image 背景图
+* background-size  背景图大小
+* linear-gradient 背景渐变
+* text-shadow 文本阴影
+* @font-face 引用字体
+* transform 
+* transition 过度
+* animation 动画
+* box-sizing 盒子模型设置
+* flex 弹性盒子
+* @media 多媒体查询
 
 
 

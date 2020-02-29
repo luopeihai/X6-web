@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X6-web css3特性</title>
+  </head>
+  <style>
+    body,
+    h3,
+    p {
+      padding: 0px;
+      margin: 0px;
+    }
+    section > ul {
+      list-style: none;
+      padding: 0px 10px;
+      margin: 0px;
+    }
+    section > ul li {
+      padding-bottom: 3px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #333;
+    }
+
+    section > ul li:first-child div {
+      background-color: tomato;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    section > ul li:nth-child(2) div {
+      background-color: tomato;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      box-shadow: 5px 5px 5px #888888;
+    }
+
+    section > ul li:nth-child(3) div {
+      width: 200px;
+      height: 100px;
+      background-image: url("../public/image/lufi.jpeg");
+    }
+    section > ul li:nth-child(4) div {
+      width: 200px;
+      height: 100px;
+      background-image: url("../public/image/lufi.jpeg");
+      background-size: 100% 100%;
+    }
+    section > ul li:nth-child(5) div {
+      width: 100%;
+      height: 50px;
+      background: linear-gradient(to left, #d3959b, #bfe6ba);
+    }
+
+    section > ul li:nth-child(6) div {
+      width: 100px;
+      height: 50px;
+      background-color: #d3959b;
+      transition: width 2s;
+      -moz-transition: width 2s; /* Firefox 4 */
+      -webkit-transition: width 2s; /* Safari and Chrome */
+      -o-transition: width 2s; /* Opera */
+    }
+    section > ul li:nth-child(6) div:hover {
+      width: 100%;
+    }
+
+    section > ul li:nth-child(7) div {
+      width: 50px;
+      height: 50px;
+      background-color: #d3959b;
+      animation: mymove 10s infinite;
+      -webkit-animation: mymove 10s infinite; /*Safari and Chrome*/
+    }
+    @keyframes mymove {
+      from {
+        width: 0px;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @-webkit-keyframes mymove /*Safari and Chrome*/ {
+      from {
+        width: 0px;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    section > ul li:nth-child(8) div {
+      width: 100%;
+      height: 50px;
+      color: #fff;
+    }
+
+    @media screen and (max-width: 959px) {
+      section > ul li:nth-child(8) div {
+        background-color: red;
+      }
+    }
+
+    @media screen and (min-width: 960px) {
+      section > ul li:nth-child(8) div {
+        background-color: #000;
+      }
+    }
+  </style>
+
+  <body class="X6-web">
+    <section class="section-1">
+      <ul>
+        <li>
+          <h3>border-raidus</h3>
+          <div></div>
+        </li>
+        <li>
+          <h3>box-shadow</h3>
+          <div></div>
+        </li>
+        <li>
+          <h3>background-image</h3>
+          <p>图片未展示全</p>
+          <div></div>
+        </li>
+        <li>
+          <h3>background-size</h3>
+          <p>background-size: 100% 100%;</p>
+          <div></div>
+        </li>
+        <li>
+          <h3>linear-gradient 背景渐变</h3>
+          <p>
+            从右到左 : background: linear-gradient(to left, #d3959b, #bfe6ba);
+          </p>
+          <div></div>
+        </li>
+        <li>
+          <h3>transition 过度</h3>
+          <div>鼠标悬浮看效果</div>
+        </li>
+        <li>
+          <h3>animation</h3>
+          <div></div>
+        </li>
+
+        <li>
+          <h3>@media</h3>
+          <div>
+            屏幕 < 960px 背景色为红色 </br>
+            屏幕 >= 960px 背景色为黑色
+          </div>
+        </li>
+      </ul>
+    </section>
+  </body>
+</html>
