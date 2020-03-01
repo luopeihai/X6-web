@@ -222,6 +222,16 @@
 * box-sizing 盒子模型设置
 * flex 弹性盒子
 * @media 多媒体查询
+  
+### box-sizing 
+CSS重要的一个概念就是CSS盒子模型。它控制着页面这些元素的高度和宽度,实际盒子的宽高 = border+padding+样式设置width/height,变成了样式中设置的width/height 不等于实际节点的width/height给实际开发带来了一定问题,故css3 有了box-sizing属性:
+语法：box-sizing: content-box | border-box | inherit;
+* content-box 为默认属性 实际width/height = border+padding+样式设置width/height
+* border-box 实际width/height = 样式设置width/height =  border+padding+ width/height
+* inherit 继承 父元素 box-sizing属性的值
+
+
+  
 
 
 
