@@ -230,6 +230,24 @@ CSS重要的一个概念就是CSS盒子模型。它控制着页面这些元素�
 * border-box 实际width/height = 样式设置width/height =  border+padding+ width/height
 * inherit 继承 父元素 box-sizing属性的值
 
+### position 的值 [栗子](http://demo.freelancerman.cn/demo/css/position.html)
+* absolute 相对于 static 定位以外的第一个父元素进行定位。
+* fixed 生成固定定位的元素，相对于浏览器窗口进行定位。（老IE不支持）
+* relative 生成相对定位的元素，相对于其正常位置进行定位，不脱离文档流。
+* static 默认值。没有定位，元素出现在正常的文档流中（忽略 top, bottom, left, right 或者 z-index 声明）。
+* inherit 规定应该从父元素继承 position 属性的值。
+
+### CSS浏览器兼容性
+**兼容性问题造成的原因**:众多的浏览器厂商,不同的版本,对同一段CSS的解析效果也不一致，这就导致了页面显示效果不统一，也就带来了兼容性问题。
+
+解决方法:
+* 浏览器CSS样式初始化 ([Normalize.css](https://github.com/necolas/normalize.css)是一种CSS reset的替代方案可以使用)
+  ```
+   *{
+        margin: 0;
+        padding: 0;
+    }
+  ```
 
   
 
