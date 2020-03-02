@@ -225,13 +225,15 @@
 * em 为相对长度单位,会继承父级元素的字体大小
 * rem 为相对长度单位,区别于em rem总是相对于根元素
 
+### rgba,opacity区别
+区别就是opacity会继承父元素的 opacity 属性 也就是做子类会继承父类的透明度，而rgba设置元素的后代元素不会继承不透明属性
 
   
 ### box-sizing 
 CSS重要的一个概念就是CSS盒子模型。它控制着页面这些元素的高度和宽度,实际盒子的宽高 = border+padding+样式设置width/height,变成了样式中设置的width/height 不等于实际节点的width/height给实际开发带来了一定问题,故css3 有了box-sizing属性:
 语法：box-sizing: content-box | border-box | inherit;
-* content-box 为默认属性 实际width/height = border+padding+样式设置width/height
-* border-box 实际width/height = 样式设置width/height =  border+padding+ width/height
+* content-box(标准模式) 为默认属性 实际width/height = border+padding+样式设置width/height
+* border-box(怪异模式) 实际width/height = 样式设置width/height =  border+padding+ width/height
 * inherit 继承 父元素 box-sizing属性的值
 
 ### position 的值 [栗子](http://demo.freelancerman.cn/demo/css/position.html)
@@ -293,6 +295,63 @@ CSS重要的一个概念就是CSS盒子模型。它控制着页面这些元素�
 * **自动化插件**  [Autoprefixer](https://github.com/postcss/autoprefixer)是一款自动管理浏览器前缀的插件,只需按照最新的W3C规范来正常书写CSS即可
 
 ## js 问题
+### 变量提升
+变量提升为:函数及变量的**声明**都将被提升到函数的最顶部,变量可以在使用后声明，也就是变量可以先使用再声明。
+* var变量提升 
+    ```
+        a = 2;
+        var a;
+        console.log(a);  //2
+
+        var b;
+        console.log(b);​ //undefined
+        b = 2;
+    ```
+    提升过程:
+    1.a,b声明都往上提到最上
+    2.初始化声明变量 a=undefined; b=undefined;
+    3.执行阶段 执行语句代码
+  ***变量初始和赋值不是同一时间执行***
+* function函数提升
+  ```
+  test();//test
+  function test(){
+        console.log("test")
+  }
+  ``` 
+  1.在全局环境(window)中找到所有用 function 声明往上提
+  2.将这些变量「初始化」并「赋值」为 function(){ console.log("test") }
+  3.执行阶段 执行语句代码 
+  ***function的初始和赋值同时执行*** 
+* let,const的变量提升(let和const变量提升相同,这里用let举栗子)
+  ```
+  let x = 'global'{ 
+    console.log(x) // Uncaught ReferenceError: x is not defined 
+    let x = 1
+    let y;
+    console.log(y) //undefind 
+  }
+  ```
+  ***这里要注意的是 脚本是直接报错x is not defined***
+  1. 找到所有用 let 声明的变量，在环境中「创建」变量
+  2. 开始执行代码（注意现在 let x 并没有像 var样有初始化为undefined的操作,所以不能使用x（也就是let ,const 所谓的“暂时性死区”,“暂时性死区”不是ECMAScript规范里的正式定义，它只是在程序员中广为流行而已））
+  ***以上 代码执行可以理解成:let 的「创建」过程被提升了，但是没初始化***
+
+综上var function let 写了一个栗子,建议在console执行一遍 加深印象  
+```
+var a=1
+b = 2
+foo()
+function foo(){
+  console.log(a) //undefined
+  console.log(b) //Uncaught ReferenceError: b is not defined(报错)
+  let b = 3;
+  //let b = 4; //Uncaught SyntaxError: Identifier 'b' has already been declared(报错 let不能重复声明)
+  var a=c=2       //var 函数作用域变量
+}
+console.log(c); //2  c其实声明的是全局变量
+
+```
 
   
   
