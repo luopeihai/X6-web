@@ -533,3 +533,35 @@ debounce(ajax, 500, e.target.value);
     }
 
 ```
+
+### 判断变量是否为数组
+
+- instanceof
+  ```
+   console.log([] instanceof Array; ) //true
+  ```
+- 基于 constructor
+  ```
+   console.log([].constructor === Array) //true
+  ```
+- Object.prototype.isPrototypeOf
+  ```
+    console.log(Array.prototype.isPrototypeOf([])) //true
+  ```
+- 基于 getPrototypeOf
+  ```
+    console.log(Object.getPrototypeOf([]) === Array.prototype) //true
+  ```
+- Object.prototype.toString
+  ```
+    console.log(Object.prototype.toString.apply(a) === '[object Array]') //true
+  ```
+- ES6 中 Array.isArray
+  ```
+    console.log(Array.isArray([])) //true
+  ```
+
+### js 数据类型
+
+- 基础类型:undefined，boolean，number，string，null , Symbol
+- 引用类型:Object,Array,Function
