@@ -464,15 +464,16 @@ document.addEventListener('DOMContentLoaded', function() {
 两种方法返回都是数组,区别:
 
 - querySelectorAll 方法接收的参数是一个 CSS 选择符,而且必须严格符合 CSS 选择符规范。而 getElementsBy 系列接收的参数只能是单一的 className、tagName 和 name。
+
   ```
   //获取 class="ul" 内的 子节点li
   //querySelectorAll 获取法
   var queryLi = document.querySelectorAll(".ul>li") //css 选择器写法
   ```
 
-//getElementsBy 获取方法
-var dmoUl = document.getElementsByClassName('ul')[0]
-var dmoli = dmoUl.getElementsByTagName("li")
+  //getElementsBy 获取方法
+  var dmoUl = document.getElementsByClassName('ul')[0]
+  var dmoli = dmoUl.getElementsByTagName("li")
 
 ```
 * querySelectorAll 返回的是一个 NodeList(静态)，而 getElementsBy 系列的返回的是一个 HTMLCollection(实际节点)。
