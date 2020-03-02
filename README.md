@@ -478,3 +478,59 @@ var dmoli = dmoUl.getElementsByTagName("li")
 * querySelectorAll 返回的是一个 NodeList(静态)，而 getElementsBy 系列的返回的是一个 HTMLCollection(实际节点)。
 * getElementBy 系列的执行速度比 querySelectorAll 的快
 ```
+
+### 节流（throttle）与防抖（debounce）[栗子](http://demo.freelancerman.cn/demo/js/debounce_throttle.html)
+
+- **_防抖_** 事件被触发 n 秒后再执行，如果在这 n 秒内又被触发，则重新计时,直到执行最后一次触发.
+
+```
+   //实际开发中input 输入联想匹配 需要用到防抖,就觉这个例子
+    //防抖 监听
+    document.getElementById("debounce").addEventListener("keyup", function(e) {
+      debounce(ajax, 500, e.target.value);
+    });
+
+    //模拟一段ajax请求
+    function ajax(content) {
+      document.getElementById("input-text").innerHTML = content;
+    }
+
+    function debounce(fun, delay, inputValue) {
+      clearTimeout(this.id);
+      this.id = setTimeout(function() {
+        fun(inputValue);
+      }, delay);
+    }
+
+```
+
+- **_节流_** 在事件被触发 n 秒后再执行,间隔时间执行,忽略间隔时间内的多次触发
+
+  ```
+    //实际开发中 按钮不断点击触发，单位时间内只触发一次
+     //点击次数
+    var throttleTime = 0;
+    //节流 监听
+    document.getElementById("throttle").addEventListener("click", function(e) {
+      throttle(function() {
+        throttleTime += 1;
+        document.getElementById("throttle-text").innerHTML = throttleTime;
+      }, 3000);
+    });
+
+    var isRun = false;
+    function throttle(fun, delay) {
+      if (isRun) {
+        return;
+      } else {
+        isRun = true;
+      }
+
+      this.id = setTimeout(function() {
+        fun();
+        isRun = false;
+        clearTimeout(this.id);
+      }, delay);
+    }
+
+  ```

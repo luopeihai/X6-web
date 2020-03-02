@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X6-web 防抖与节流</title>
+  </head>
+  <style>
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+    section {
+      margin-bottom: 20px;
+      border-bottom: 10px solid #333;
+    }
+
+    section > div {
+      height: 100px;
+      background-color: #3acec1;
+    }
+  </style>
+
+  <body class="X6-web">
+    <section class="section-1">
+      <h1>防抖</h1>
+      <div>
+        <input id="debounce" type="text" />
+        <p>输入内容(间隔500sm):<span id="input-text"></span></p>
+      </div>
+    </section>
+    <section class="section-2">
+      <h1>节流</h1>
+      <div>
+        <input type="button" id="throttle" value="节流-点击" />
+        <p>
+          点击执行次数(间隔3000sm 执行一次):<span id="throttle-text"></span>
+        </p>
+      </div>
+    </section>
+  </body>
+  <script type="">
+    //防抖 监听
+    document.getElementById("debounce").addEventListener("keyup", function(e) {
+      debounce(ajax, 500, e.target.value);
+    });
+
+    //模拟一段ajax请求
+    function ajax(content) {
+      document.getElementById("input-text").innerHTML = content;
+    }
+
+    function debounce(fun, delay, inputValue) {
+      clearTimeout(this.id);
+      this.id = setTimeout(function() {
+        fun(inputValue);
+      }, delay);
+    }
+  </script>
+  <script type="">
+    //点击次数
+    var throttleTime = 0;
+    //节流 监听
+    document.getElementById("throttle").addEventListener("click", function(e) {
+      throttle(function() {
+        throttleTime += 1;
+        document.getElementById("throttle-text").innerHTML = throttleTime;
+      }, 3000);
+    });
+
+    var isRun = false;
+    function throttle(fun, delay) {
+      if (isRun) {
+        return;
+      } else {
+        isRun = true;
+      }
+
+      this.id = setTimeout(function() {
+        fun();
+        isRun = false;
+        clearTimeout(this.id);
+      }, delay);
+    }
+  </script>
+</html>
