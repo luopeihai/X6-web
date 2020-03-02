@@ -469,11 +469,11 @@ document.addEventListener('DOMContentLoaded', function() {
   //获取 class="ul" 内的 子节点li
   //querySelectorAll 获取法
   var queryLi = document.querySelectorAll(".ul>li") //css 选择器写法
-  ```
 
   //getElementsBy 获取方法
   var dmoUl = document.getElementsByClassName('ul')[0]
   var dmoli = dmoUl.getElementsByTagName("li")
+  ```
 
 ```
 * querySelectorAll 返回的是一个 NodeList(静态)，而 getElementsBy 系列的返回的是一个 HTMLCollection(实际节点)。
