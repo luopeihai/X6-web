@@ -3,10 +3,7 @@
 * <font face="黑体" color=#999 size=5>通过web服务 在线运行案列(点击"栗子"看运行效果)讲解前端技能点和面试题(web front-end technology   Interview  vue react react-native)</font>
 * <font face="黑体" color=#999 size=5>运行胜于一切背题,源码在demo下欢迎拿走,背题你就破功了 老弟!</font>
 
-
-
-
-## css 题目
+## css 问题
 
 ### 水平垂直居中 [栗子](http://demo.freelancerman.cn/demo/css/horizontal_vertical_center.html)
 * 绝对定位+margin:auto (父类为相对位置,子类为绝对位置)
@@ -222,6 +219,13 @@
 * box-sizing 盒子模型设置
 * flex 弹性盒子
 * @media 多媒体查询
+
+### px,rem,em区别
+* px 为绝对长度单位
+* em 为相对长度单位,会继承父级元素的字体大小
+* rem 为相对长度单位,区别于em rem总是相对于根元素
+
+
   
 ### box-sizing 
 CSS重要的一个概念就是CSS盒子模型。它控制着页面这些元素的高度和宽度,实际盒子的宽高 = border+padding+样式设置width/height,变成了样式中设置的width/height 不等于实际节点的width/height给实际开发带来了一定问题,故css3 有了box-sizing属性:
@@ -241,13 +245,61 @@ CSS重要的一个概念就是CSS盒子模型。它控制着页面这些元素�
 **兼容性问题造成的原因**:众多的浏览器厂商,不同的版本,对同一段CSS的解析效果也不一致，这就导致了页面显示效果不统一，也就带来了兼容性问题。
 
 解决方法:
-* 浏览器CSS样式初始化 ([Normalize.css](https://github.com/necolas/normalize.css)是一种CSS reset的替代方案可以使用)
+* **浏览器CSS样式初始化** ([Normalize.css](https://github.com/necolas/normalize.css)是一种CSS reset的替代方案可以使用)
   ```
    *{
         margin: 0;
         padding: 0;
     }
   ```
+* **浏览器私有属性** 当W3C组织成员提出一个新属性 需要走很复杂的程序，审查等,浏览器商不能等太久,所以先把新属性加自己浏览器能识别的前缀,常用的前缀有：
+   * -moz代表firefox浏览器私有属性
+   * -ms代表IE浏览器私有属性
+   * -webkit代表chrome、safari私有属性
+   * -o代表opera私有属性
+  
+ >> 比如transform的使用
+ ```
+    -webkit-transform:rotate(-3deg); /*为Chrome/Safari*/
+    -moz-transform:rotate(-3deg); /*为Firefox*/
+    -ms-transform:rotate(-3deg); /*为IE*/
+    -o-transform:rotate(-3deg); /*为Opera*/
+    transform:rotate(-3deg); 
+ ```
+* **hack** 有时我们需要针对不同的浏览器或不同版本写特定的CSS样式，这种针对不同的浏览器/不同版本写相应的CSS code的过程，叫做CSS hack!
+  >CSS hack的写法大致归纳为3种：条件hack、属性级hack、选择符级hack。
+  * ***条件hack*** 条件hack主要针对IE浏览器进行一些特殊的设置 (***IE10及以上版本已将条件注释特性移除***)
+  ```
+   <!--[if <keywords>? IE <version>?]>
+     代码块，可以是html，css，js
+    <![endif]-->
+
+    栗子:
+    <!--[if IE]>
+        <p>你在非IE中将看不到我的身影</p>
+    <![endif]-->
+
+    <!--[if IE]>
+    <style>
+        .test{color:red;}
+    </style>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  ```
+* **自动化插件**  [Autoprefixer](https://github.com/postcss/autoprefixer)是一款自动管理浏览器前缀的插件,只需按照最新的W3C规范来正常书写CSS即可
+
+## js 问题
+
+  
+  
+  
+ 
+ 
+
 
   
 
