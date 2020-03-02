@@ -352,7 +352,28 @@ function foo(){
 console.log(c); //2  c其实声明的是全局变量
 
 ```
+### typeof和instanceof的区别
+* typeof操作符返回一个字符串,为变量的基本类型
+  ```
+  typeof 123 // "number"
+  typeof '123' // "string"
+  typeof false // "boolean"
+  typeof undefined // "undefined"
+  typeof window // "object"
+  typeof {} // "object"
+  typeof [] // "object"
+  typeof null // "object"
 
+  ```
+* instanceof 是判断变量是否为某个对象的实例，返回值为true或false
+  ```
+    var o = {};
+    var a = [];
+
+    o instanceof Array // false
+    a instanceof Array // true
+    a instanceof Object // true
+  ```
   
   
   
