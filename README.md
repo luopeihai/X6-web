@@ -565,3 +565,91 @@ debounce(ajax, 500, e.target.value);
 
 - 基础类型:undefined，boolean，number，string，null , Symbol
 - 引用类型:Object,Array,Function
+
+### js 深拷贝 与 浅拷贝
+
+深拷贝 与 浅拷贝针对的是 引用类型,请看下面代码
+
+```
+  //基础类型
+  var a = 1;
+  var b = a;
+  a = 2;
+  console.log(a); // 2
+  console.log(b); // 1
+  console.log(a === b) //false
+  //当a,b为基础类型,当a赋值给b 内存新增地址储存b的值 各自变值不受影响
+
+  //引用类型
+  var x = [1];
+  var y = x ;
+  console.log(y); //[1]
+  x[0] = 2;
+  console.log(y); //[2]
+  console.log(x === y); //true
+  // x,y都为引用类型,都指向内存堆里的 [1]值,所以不管是x还是y都会改变 [1]的值
+```
+
+引用类型 共用内存一个地址的值,很多时候并不是我们实际开发中需要的,用浅拷贝 和 深拷贝 解决
+
+- 浅拷贝
+  ```
+  var obj1 = {
+    name : 'hello',
+    age : {'my':18}
+  }
+  var obj2 = obj1;
+  var obj3 = shallowCopy(obj1);
+  function shallowCopy(src) {
+        var dst = {};
+        for (var prop in src) {
+            if (src.hasOwnProperty(prop)) {
+                dst[prop] = src[prop];
+            }
+        }
+        return dst;
+    }
+  obj2.name = "word";
+  obj3.name = "firght";
+  obj3.age = {'you':30}
+  console.log(obj1) //{name: "word",age: {my: 18}}
+  console.log(obj2) //{name: "word",age: {my: 18}}
+  console.log(obj3) //{name: "firght",age: {you: 30}}
+  ```
+
+* 深拷贝
+  ```
+   // 递归实现一个深拷贝
+  function deepClone(source){
+    if(!source || typeof source !== 'object'){
+      throw new Error('error arguments', 'shallowClone');
+    }
+    var targetObj = source.constructor === Array ? [] : {};
+    for(var keys in source){
+        if(source.hasOwnProperty(keys)){
+          if(source[keys] && typeof source[keys] === 'object'){
+            targetObj[keys] = source[keys].constructor === Array ? [] : {};
+            targetObj[keys] = deepClone(source[keys]);
+          }else{
+            targetObj[keys] = source[keys];
+          }
+        }
+    }
+    return targetObj;
+  }
+  // test example
+  var o1 = {
+    arr: [1, 2, 3],
+    obj: {
+      key: 'value'
+    },
+    func: function(){
+      return 1;
+    }
+  };
+  var o2 = o1;
+  var o3 = deepClone(o1);
+  console.log(o3 === o1); // => false
+  console.log(o3.obj === o1.obj); // => false
+  console.log(o2.func === o1.func); // => true
+  ```
