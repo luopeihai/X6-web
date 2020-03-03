@@ -705,6 +705,28 @@ var a = new A();
 ### redux 缺点
 * 一个组件所需要的数据，必须甶父组件传过来，而不能像flux中直接从store取
 * 当一个组件相关数据更新吋，即使父组件不需要用到这个组件 父组件还是会重新render
-### setState 为什么是异步
-
+  
+### setState的同步更新
+众所周知 setState为异步,异步的理由 和react 设计思路有关系,就不细说了,主要是说同步更新吧
+* setState 回调函数
+  ```
+    this.setState({count:1},()=>{
+     console.log(this.state.count)//输出count=1
+    });
+  ```
+* ES7的Async/Await实现异步转同步
+  ```
+    setStateAsync(state) {
+      return new Promise((resolve) => {
+       this.setState(state, resolve)
+      });
+    }
+    async componentDidMount() {
+      await this.setStateAsync({count: 1});
+      console.log(this.state.count);//输出count=1
+    }
+   // async 表示这是一个async函数，await只能用在这个函数里面。
+   // await 表示在这里等待promise返回结果了，再继续执行。
+   // await 后面跟着的应该是一个promise对象
+  ```
 ### 
