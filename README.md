@@ -442,7 +442,6 @@ css:
 </ul>
 
 
-
 js:
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -455,8 +454,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   })
 })
-
-
 ```
 
 ### querySelectorAll 与 getElementsBy 区别
@@ -478,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
 - querySelectorAll 返回的是一个 NodeList(静态)，而 getElementsBy 系列的返回的是一个 HTMLCollection(实际节点)。
 - getElementBy 系列的执行速度比 querySelectorAll 的  快
 
-### 节流（throttle）与防抖（debounce）[栗子](http://demo.freelancerman.cn/demo/js/debounce_throttle.html)
+### 防抖（debounce）与 节流（throttle）[栗子](http://demo.freelancerman.cn/demo/js/debounce_throttle.html)
 
 - **_防抖_** 事件被触发 n 秒后再执行，如果在这 n 秒内又被触发，则重新计时,直到执行最后一次触发.
 
@@ -653,3 +650,59 @@ debounce(ajax, 500, e.target.value);
   console.log(o3.obj === o1.obj); // => false
   console.log(o2.func === o1.func); // => true
   ```
+
+### 移动端 300ms 点击延迟
+
+### 原型链
+
+### new 实例实际做了什么
+
+```
+var a = new A();
+```
+
+当这段代码运行的时候，内部实际上执行的是：
+
+```
+  // 1. 首先创建一个空对象
+  var o = new Object();
+  // 2. 将空对象的原型赋值为构造器函数的原型
+  o.__proto__ = A.prototype;
+  // 3. 更改构造器函数内部this，将其指向新创建的空对象
+  A.call(o);
+```
+
+### 数组去重
+
+### js 报错等级
+
+### 安全
+
+## React
+
+### React 生命周期
+
+- componentWillMount 在渲染前调用,在客户端也在服务端。
+- componentDidMount 在第一次渲染后调用,
+- componentWillReceiveProps 在组件接收到一个新的 prop (更新后)时被调用。这个方法在初始化 render 时不会被调用。
+- shouldComponentUpdate 返回一个布尔值。在组件接收到新的 props 或者 state 时被调用。在初始化时或者使用 forceUpdate 时不被调用。
+- componentWillUpdate 在组件接收到新的 props 或者 state 但还没有 render 时被调用
+- componentDidUpdate 在组件完成更新后立即调用。在初始化时不会被调用。
+- componentWillUnmount 在组件从 DOM 中移除之前立刻被调用
+
+### React16 新特性
+
+### React Diff 算法
+
+### webpack
+
+### react 组件传值方式
+* 父组件传给子组件  父组件通过props传递给子组件
+* 子组件传给父组件  父组件传递传参函数给子组件,子组件塞参数调用父组件方法
+* Router 传参
+* redux 传值
+  
+### redux 缺点
+### setState 为什么是异步
+
+### 
