@@ -120,7 +120,7 @@
 
 ```
   .triangle{
-      height: 0px;
+    height: 0px;
 	  width: 0px;
 	  border-color: transparent red transparent transparent;
 	  border-style: solid;
@@ -225,12 +225,13 @@
    text-overflow:ellipsis;
    white-space: nowrap;
   ```
+
 - 多行文本溢出
   ```
    display: -webkit-box; /* 弹性伸缩盒子模型显示 */
-     -webkit-box-orient: vertical; /*  检索伸缩盒对象的子元素的排列方式 */
-     -webkit-line-clamp: 3; /*用来限制在一个块元素显示的文本的行数 */
-     overflow: hidden;
+   -webkit-box-orient: vertical; /*  检索伸缩盒对象的子元素的排列方式 */
+   -webkit-line-clamp: 3; /*用来限制在一个块元素显示的文本的行数 */
+   overflow: hidden;
   ```
 
 ### 常用的 css3 属性 [栗子](http://demo.freelancerman.cn/demo/css/css3.html)
@@ -248,6 +249,11 @@
 - box-sizing 盒子模型设置
 - flex 弹性盒子
 - @media 多媒体查询
+- rem 相对单位
+- vw (相对于视窗的宽度，1vw 等于视口宽度的1%，即视窗宽度是100vw)
+- vh (相对于视窗的高度，1vh 等于视口高度的1%，即视窗高度是100vh)
+- vmin vw和vh中的较小值
+- vmax vw和vh中的较大值
 
 ### px,rem,em 区别
 
@@ -296,15 +302,15 @@ CSS 重要的一个概念就是 CSS 盒子模型。它控制着页面这些元�
   - -webkit 代表 chrome、safari 私有属性
   - -o 代表 opera 私有属性
 
-> > 比如 transform 的使用
+  比如 transform 的使用
 
-```
-   -webkit-transform:rotate(-3deg); /*为Chrome/Safari*/
-   -moz-transform:rotate(-3deg); /*为Firefox*/
-   -ms-transform:rotate(-3deg); /*为IE*/
-   -o-transform:rotate(-3deg); /*为Opera*/
-   transform:rotate(-3deg);
-```
+  ```
+    -webkit-transform:rotate(-3deg); /*为Chrome/Safari*/
+    -moz-transform:rotate(-3deg); /*为Firefox*/
+    -ms-transform:rotate(-3deg); /*为IE*/
+    -o-transform:rotate(-3deg); /*为Opera*/
+    transform:rotate(-3deg);
+  ```
 
 - **hack** 有时我们需要针对不同的浏览器或不同版本写特定的 CSS 样式，这种针对不同的浏览器/不同版本写相应的 CSS code 的过程，叫做 CSS hack!
 
@@ -445,9 +451,7 @@ css:
 js:
 
 document.addEventListener('DOMContentLoaded', function() {
-  let app = document.getElementById('todo-app');
-
-  app.addEventListener('click', function(e) {
+ document.getElementById('todo-app').addEventListener('click', function(e) {
     if (e.target && e.target.nodeName === 'LI') {
       let item = e.target;
       alert('you clicked on item: ' + item.innerHTML)
@@ -483,7 +487,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //实际开发中 input 输入联想匹配 需要用到防抖,就觉这个例子
 //防抖 监听
 document.getElementById("debounce").addEventListener("keyup", function(e) {
-debounce(ajax, 500, e.target.value);
+   debounce(ajax, 500, e.target.value);
 });
 
     //模拟一段ajax请求
@@ -677,6 +681,49 @@ var a = new A();
 ### js 报错等级
 
 ### 安全
+
+### 响应式布局
+响应式布局指的是同一页面在不同屏幕尺寸下有不同的布局 优点:pc和移动端用一套代码 缺点:css会重 再次开发会更难
+> 响应式设计与自适应设计的区别：响应式开发一套界面，通过检测视口分辨率，针对不同客户端在客户端做代码处理，来展现不同的布局和内容；自适应需要开发多套界面，通过检测视口分辨率，来判断当前访问的设备是pc端、平板、手机，从而请求服务层，返回不同的页面。
+
+***响应式布局的实现方案***
+* 设置 Meta 标签
+  ```
+  //html 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  ```
+* css3 media 媒体查询
+  ```
+    //响应 960 到 1200
+    @media screen and (min-width:960px) and (max-width:1200px){
+        body{
+            background:yellow;
+        }
+    }
+  ```
+* rem布局 
+已根元素font-size的大小 的相对单位,需要通过js来设置根元素
+这里 用适配750px 设计稿 
+```
+  (function () {
+    function setSize(){
+        //获取浏览器窗口文档显示区域的宽度，不包括滚动条:document.documentElement.clientWidth
+        var html = document.documentElement;
+        //控制分辨率在某个范围内，超过了该范围，我们就不再增加根元素的字体大小
+        var windowWidth = html.clientWidth;
+        html.style.fontSize = windowWidth / 7.5 + 'px';  //7.5为设计稿750 
+
+        // 等价于html.style.fontSize = windowWidth / 750 * 100 + 'px';
+    }
+    setSize()
+    window.onresize=function(){
+        setSize()
+    }
+  })();
+```
+* vh / vw / vmin /vmax
+* 元素 中 min-width , max-width, width 属性分情况用rem,%
+* 结合flex，grid，BFC，栅格系统等已经成型的方案 
 
 ## React
 
