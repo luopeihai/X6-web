@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X6-web 三行布局</title>
+  </head>
+  <style>
+    body,
+    h3,
+    p {
+      padding: 0px;
+      margin: 0px;
+    }
+    section {
+      margin-bottom: 20px;
+      border-bottom: 10px solid #333;
+    }
+
+    section .layout,
+    section .layout div {
+      min-height: 100px;
+    }
+
+    .section-1 .left {
+      float: left;
+      width: 100px;
+      background-color: chartreuse;
+    }
+
+    .section-1 .right {
+      float: right;
+      width: 100px;
+      background-color: darkseagreen;
+    }
+
+    .section-1 .center {
+      background-color: darkslategrey;
+    }
+
+    .section-2 .layout {
+      position: relative;
+    }
+    .section-2 .left {
+      position: absolute;
+      left: 0;
+      width: 100px;
+      background-color: chartreuse;
+    }
+
+    .section-2 .right {
+      position: absolute;
+      right: 0;
+      width: 100px;
+      background-color: darkseagreen;
+    }
+
+    .section-2 .center {
+      background-color: darkslategrey;
+      position: absolute;
+      top: 0px;
+      left: 100px;
+      right: 100px;
+    }
+
+    .section-3 .layout {
+      display: flex;
+    }
+    .section-3 .left {
+      width: 100px;
+      background-color: chartreuse;
+    }
+
+    .section-3 .right {
+      width: 100px;
+      background-color: darkseagreen;
+    }
+
+    .section-3 .center {
+      flex: 1;
+      background-color: darkslategrey;
+    }
+
+    .section-4 .layout {
+      display: table;
+      width: 100%;
+    }
+    .section-4 .left {
+      display: table-cell;
+      width: 100px;
+      background-color: chartreuse;
+    }
+
+    .section-4 .right {
+      display: table-cell;
+      width: 100px;
+      background-color: darkseagreen;
+    }
+
+    .section-4 .center {
+      display: table-cell;
+      background-color: darkslategrey;
+    }
+
+    .section-5 .layout {
+      display: grid;
+      width: 100%;
+      grid-template-rows: 100px;
+      grid-template-columns: 100px auto 100px;
+    }
+
+    .section-5 .left {
+      background-color: chartreuse;
+    }
+
+    .section-5 .right {
+      background-color: darkseagreen;
+    }
+
+    .section-5 .center {
+      background-color: darkslategrey;
+    }
+  </style>
+
+  <body class="X6-web">
+    <section class="section-1">
+      <h2>float 浮动解决</h2>
+      <div class="layout">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">
+          float 浮动解决 中间部分
+        </div>
+      </div>
+    </section>
+
+    <section class="section-2">
+      <h2>absolute</h2>
+      <div class="layout">
+        <div class="left"></div>
+        <div class="center">
+          absolute
+        </div>
+        <div class="right"></div>
+      </div>
+    </section>
+
+    <section class="section-3">
+      <h2>flex</h2>
+      <div class="layout">
+        <div class="left"></div>
+        <div class="center">
+          flex
+        </div>
+        <div class="right"></div>
+      </div>
+    </section>
+
+    <section class="section-4">
+      <h2>table</h2>
+      <div class="layout">
+        <div class="left"></div>
+        <div class="center">
+          table
+        </div>
+        <div class="right"></div>
+      </div>
+    </section>
+
+    <section class="section-5">
+      <h2>grid</h2>
+      <div class="layout">
+        <div class="left"></div>
+        <div class="center">
+          grid
+        </div>
+        <div class="right"></div>
+      </div>
+    </section>
+  </body>
+</html>
