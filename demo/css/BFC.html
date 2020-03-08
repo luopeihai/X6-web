@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X6-web BFC</title>
+  </head>
+  <style>
+    body,
+    h3,
+    p,
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+    section {
+      margin-bottom: 20px;
+      border-bottom: 10px solid #333;
+    }
+    /* section .layout,
+    section .layout div {
+      min-height: 100px;
+    } */
+
+    .section-1 {
+    }
+
+    .section-1 ul {
+      flex: 1;
+      color: #fff;
+      list-style: none;
+    }
+    .section-1 .content-1 li {
+      margin: 10px 0px;
+      background-color: darkslategrey;
+    }
+
+    .section-1 .content-1 li:last-child {
+      margin: 20px 0px;
+    }
+
+    .section-1 .content-2 li {
+      overflow: hidden;
+    }
+    .section-1 .content-2 li p {
+      margin: 10px 0px;
+      background-color: darkslategrey;
+    }
+    .section-1 .content-2 li p:last-child {
+      margin: 20px 0px;
+      background-color: darkslategrey;
+    }
+  </style>
+
+  <body class="X6-web">
+    <section class="section-1">
+      <h2>margin重叠</h2>
+      <div class="layout">
+        <h2>现象:(垂直 margin重叠 为20px 而不是叠加30px;)</h2>
+        <ul class="content-1">
+          <li>margin:10px 0px;</li>
+          <li>margin:20px 0px;</li>
+        </ul>
+
+        <h2>解决:(各自分配独立 BFC)</h2>
+        <ul class="content-2">
+          <li>
+            <p>margin:10px 0px;</p>
+          </li>
+          <li>
+            <p>
+              margin:20px 0px;
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <style>
+      .section-2 .content-1,
+      .section-2 .content-2 {
+        border: darkslategrey solid 5px;
+      }
+
+      .section-2 .float {
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: deeppink;
+      }
+
+      .section-2 .content-2 {
+        overflow: hidden;
+      }
+    </style>
+
+    <section class="section-2">
+      <h2>清除内部浮动</h2>
+      <div class="layout">
+        <h2>现象:(子类浮动 没把父类撑开)</h2>
+        <div class="content-1">
+          <div class="float">float: left;</div>
+        </div>
+
+        <h2 style="margin-top:100px;">解决:(父类 overflow: hidden;)</h2>
+        <div class="content-2">
+          overflow: hidden;
+          <div class="float">
+            float: left;
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .section-3 .float {
+        float: left;
+        width: 50px;
+        height: 50px;
+        background-color: deeppink;
+      }
+
+      .section-3 .text {
+        color: #fff;
+        background-color: deepskyblue;
+      }
+
+      .section-3 .content-2 .text {
+        overflow: auto;
+      }
+    </style>
+
+    <section class="section-3">
+      <h2>自适应两栏布局</h2>
+      <div class="layout">
+        <h2>现象:(正常文档流兄弟节点覆盖 浮动节点)</h2>
+        <div class="content-1">
+          <div class="float">float: left;</div>
+          <div class="text">
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流
+          </div>
+        </div>
+
+        <h2>解决:(正常文档流兄弟节点 overflow:auto)</h2>
+        <div class="content-2">
+          <div class="float">float: left;</div>
+          <div class="text">
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流 文本超过浮动 会覆盖 正常文档流 文本超过浮动 会覆盖
+            正常文档流
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
