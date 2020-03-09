@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X6-web Event</title>
+  </head>
+  <style>
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+    section {
+      margin-bottom: 20px;
+      border-bottom: 10px solid #333;
+    }
+
+    section > div {
+      height: 100px;
+      background-color: #3acec1;
+    }
+
+    .section-2 #A {
+      display: flex;
+      background-color: dimgrey;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .section-2 #B {
+      width: 100px;
+      height: 50px;
+      background-color: dodgerblue;
+    }
+  </style>
+
+  <body class="X6-web">
+    <section class="section-1">
+      <h1>stopImmediatePropagation</h1>
+      <div>
+        <a id="btn" href="#">点击触发事件</a>
+      </div>
+    </section>
+    <script type="">
+      //注册事件A
+      document.getElementById("btn").addEventListener("click", function(e) {
+        console.log("事件A被执行");
+        event.stopImmediatePropagation();
+      });
+
+      //注册事件B
+      document.getElementById("btn").addEventListener("click", function(e) {
+        console.log("事件B被执行");
+      });
+    </script>
+
+    <section class="section-2">
+      <h1>currentTarget 和 target</h1>
+      <div id="A">
+        <div id="B">B 内容区域</div>
+      </div>
+    </section>
+    <script type="">
+      var a = document.getElementById("A"),
+        b = document.getElementById("B");
+      function handler(e) {
+        console.log(e.target);
+        console.log(e.currentTarget);
+      }
+      a.addEventListener("click", handler, false);
+
+      //点击b
+      // <div id="B"></div>
+      // <div id="A">...</div>
+
+      //点击a
+      // <div id="A">...</div>
+      // <div id="A">...</div>
+    </script>
+
+    <section class="section-2">
+      <h1 id="custome">自定义事件</h1>
+    </section>
+    <script type="">
+      var eve = new Event("custome");
+      var dom = document.getElementById("custome");
+
+      dom.addEventListener("custome", function() {
+        console.log("执行自定义事件 custome");
+      });
+
+      //触发自定义事件
+      dom.dispatchEvent(eve);
+    </script>
+  </body>
+</html>
