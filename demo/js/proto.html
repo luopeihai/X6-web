@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X6-web proto原型链</title>
+  </head>
+  <style>
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+    section {
+      margin-bottom: 20px;
+      border-bottom: 10px solid #333;
+    }
+
+    section > div {
+      height: 100px;
+      background-color: #3acec1;
+    }
+  </style>
+
+  <body class="X6-web">
+    <section class="section-1">
+      <h1>创建对象</h1>
+      <script type="">
+        //方法1
+        var o1 = { name: "o1" };
+        var o2 = new Object({ name: "o2" });
+
+        //方法2
+        var M = function() {
+          this.name = "o3";
+        };
+        var o3 = new M();
+
+        //方法3
+        var P = { name: "o4" };
+        var o4 = Object.create(P);
+
+        console.log(o1); //{name: "o1"}
+        console.log(o2); // {name: "o2"}
+        console.log(o3); // M {name: "o3"}
+        console.log(o4); //{}
+      </script>
+    </section>
+    <script>
+      function Animal() {}
+      function Cat() {}
+      Cat.prototype = new Animal();
+      function BadCat() {}
+      BadCat.prototype = new Cat();
+      var x = new Animal();
+      // console.log(badCat instanceof Cat); //true
+      // console.log(badCat instanceof Animal); //true
+      console.log(x instanceof Function); //false
+      // console.log(badCat instanceof Object); //true
+    </script>
+  </body>
+</html>
