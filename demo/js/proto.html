@@ -55,11 +55,12 @@
       Cat.prototype = new Animal();
       function BadCat() {}
       BadCat.prototype = new Cat();
-      var x = new Animal();
-      // console.log(badCat instanceof Cat); //true
-      // console.log(badCat instanceof Animal); //true
-      console.log(x instanceof Function); //false
-      // console.log(badCat instanceof Object); //true
+      var badCat = new BadCat();
+      console.log(badCat instanceof Cat); //true
+      console.log(badCat instanceof Animal); //true
+      console.log(badCat instanceof Function); //false
+
+      console.log(badCat instanceof Object); //true
     </script>
   </body>
 </html>
