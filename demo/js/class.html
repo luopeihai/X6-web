@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X6-web 继承方式</title>
+  </head>
+  <style>
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+    section {
+      margin-bottom: 20px;
+      border-bottom: 10px solid #333;
+    }
+
+    section > div {
+      height: 100px;
+      background-color: #3acec1;
+    }
+  </style>
+
+  <body class="X6-web">
+    <section class="section-1">
+      <h1>借助构造函数实现继承</h1>
+      <script type="">
+        /**
+         * 借助构造函数实现继承
+         */
+        function Parent1() {
+          this.name = "parent1";
+          this.order = function() {};
+        }
+
+        Parent1.prototype.say = function() {};
+
+        function Child1() {
+          Parent1.call(this); //构造函数 创建子类赋值给Child1
+          this.type = "child1";
+        }
+
+        var child1 = new Child1();
+        console.log("构造函数继承:");
+        console.log(child1); //{name: "parent1", type: "child1", order: ƒ}
+        console.log(child1.hasOwnProperty("order")); //true
+        console.log(child1.say); //undefined 不继承父类原型链方法
+
+        //说明子类实例共享父类引用属性 为指向新内存地址(构造创建了新内存)
+        var child2 = new Child1();
+        child2.name = "child2";
+        console.log(child2.name); //child2
+        console.log(child1.name); // parent1
+
+        //优点
+        // 子类实例共享父类引用属性 为指向新内存地址(构造创建了新内存)
+        // 创建子类实例时，可以向父类传递参数
+        // 可以实现多继承(call多个父类对象)
+
+        //缺点
+        // 只能继承父类的实例属性和方法，不能继承原型属性和方法
+        // 每个子类都有父类实例函数的副本，影响性能
+      </script>
+    </section>
+
+    <section class="section-2">
+      <h1>原型链继承</h1>
+      <script type="">
+        /**
+         * 原型链继承
+         */
+        function Parent2() {
+          this.name = ["parent2"];
+          this.order = function() {};
+        }
+
+        function Child2() {
+          this.type = "child1";
+        }
+
+        Child2.prototype = new Parent2();
+
+        var child3 = new Child2();
+        console.log("原型链继承");
+        console.log(child3); //Child2 {type: "child1"}
+        //说明父类对象的所有属性被 所有实例共享
+        var child4 = new Child2();
+        child3.name.push("child3");
+        console.log(child3.name); //["parent2", "child3"]
+        console.log(child4.name); // ["parent2", "child3"]
+
+        //优点
+        // 子类能继承父类原型链
+
+        //缺点
+        // 说明父类对象的所有属性被 所有实例共享
+        // 无法实现多继承
+        // 创建子类实例时，无法向父类构造函数传参
+      </script>
+    </section>
+
+    <section class="section-3">
+      <h1>原型链+借用构造函数的组合继承</h1>
+      <script type="">
+        /**
+         * 原型链+借用构造函数的组合继承
+         */
+        function Parent3() {
+          this.name = ["parent3"];
+          this.order = function() {};
+        }
+
+        Parent3.prototype.say = function() {
+          console.log("say");
+        };
+
+        function Child3() {
+          Parent3.call(this);
+          this.type = "child3";
+        }
+
+        Child3.prototype = new Parent3();
+
+        var child5 = new Child3();
+        console.log("原型链+借用构造函数的组合继承");
+        console.log(child5); //Child3 {name: Array(1), type: "child3", order: ƒ}
+        console.log(child5.say); // ƒ () { console.log("say");} 继承父类原型链
+
+        //说明父类对象的所有属性被 所有实例共享
+        var child6 = new Child3();
+        child5.name.push("child5");
+        console.log(child5.name); //["parent3", "child5"]
+        console.log(child6.name); //["parent3"]
+
+        //优点
+        // 不存在引用属性共享问题
+        // 创建子类实例时，可以向父类传递参数
+
+        //缺点
+        // 调用了两次父类构造函数，生成了两份实例
+      </script>
+    </section>
+
+    <section class="section-4">
+      <h1>原型链+借用构造函数的组合继承 优化1</h1>
+      <script type="">
+        /**
+         * 原型链+借用构造函数的组合继承 优化1
+         */
+        function Parent4() {}
+
+        function Child4() {
+          Parent4.call(this);
+          this.type = "child4";
+        }
+
+        Child4.prototype = Parent4.prototype;
+
+        var child7 = new Child4();
+        var child8 = new Child4();
+        console.log("原型链+借用构造函数的组合继承 优化1");
+        console.log(child7); //Child4 {type: "child4"}
+
+        //说明 Child4 的构造函数指向了Parent4,应该指向Child4自身构造函数
+        console.log(child7 instanceof Child4, child8 instanceof Parent4); //true true
+        console.log(child7.constructor); //ƒ Parent4() {}
+
+        //优点
+        // 不会初始化两次实例方法/属性，避免的组合继承的缺点
+
+        //缺点
+        //子类构造函数被指向父类构造函数
+      </script>
+    </section>
+
+    <section class="section-5">
+      <h1>原型链+借用构造函数的组合继承 优化2</h1>
+      <script type="">
+        /**
+         * 原型链+借用构造函数的组合继承 优化2
+         */
+        function Parent5() {}
+
+        function Child5() {
+          Parent5.call(this);
+          this.type = "child5";
+        }
+        //完整的原型链继承
+        Child5.prototype = Object.create(Parent5.prototype);
+      </script>
+    </section>
+  </body>
+</html>
